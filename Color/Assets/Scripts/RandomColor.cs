@@ -4,23 +4,23 @@ using TMPro;
 
 public class RandomColor : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI text;
+    private TextMeshProUGUI[] allTexts;
     [SerializeField] private float interval = 1f;
     void Start()
     {
-        text = GetComponent<TextMeshProUGUI>();
-        InvokeRepeating("ColorChange", 0, interval);
+        allTexts = FindObjectsOfType<TextMeshProUGUI>(true);
+        InvokeRepeating(nameof(ColorChange), 0, interval);
     }
 
     private void ColorChange()
     {
-        Color randomColor = new Color(Random.value, Random.value, Random.value);
-
-        if(text != null)
+        foreach (var text in allTexts)
         {
-            text.color = randomColor;
+            if (text != null)
+            {
+                Color randomColor = new Color(Random.value, Random.value, Random.value);
+                text.color = randomColor;
+            }
         }
-
-        
     }
 }
