@@ -8,7 +8,7 @@ public class CountDownController : MonoBehaviour
 {
     public int countDownTime;
     public TextMeshProUGUI countDownText;
-    void Start()
+    public void BeginCountdown()
     {
         StartCoroutine(CountDownToStart());    
     }
