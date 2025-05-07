@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject obstaclePrefab;
     private float spawnInterval = 1.2f;
     private float spawnZOffset = 20f;       //Distance from player
-    private float xMin = -3f, xMax = 3f;
+    private float xMin = -2f, xMax = 2f;
 
     private Transform player;
     void Start()
