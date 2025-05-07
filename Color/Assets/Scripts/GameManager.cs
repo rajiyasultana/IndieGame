@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI timeText;
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private float time = 0f;
     void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     
