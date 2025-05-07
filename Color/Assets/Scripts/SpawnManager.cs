@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject obstaclePrefab;
-    private float spawnInterval = 1.5f;
+    private float spawnInterval = 1.2f;
     private float spawnZOffset = 20f;       //Distance from player
     private float xMin = -3f, xMax = 3f;
 
@@ -21,6 +21,15 @@ public class SpawnManager : MonoBehaviour
         float randomX = Random.Range(xMin, xMax);
         Vector3 spawnPos = new Vector3(randomX, player.position.y, player.position.z + spawnZOffset);
         
-        Instantiate(obstaclePrefab, spawnPos, Quaternion.identity);
+        GameObject newObstacle = Instantiate(obstaclePrefab, spawnPos, Quaternion.identity);
+
+        //Assign random color
+        Renderer rend = newObstacle.GetComponent<Renderer>();
+        if (rend != null )
+        {
+            Color randomColor = new Color(Random.value, Random.value, Random.value);
+            rend.material.color = randomColor;
+            
+        }
     }
 }
