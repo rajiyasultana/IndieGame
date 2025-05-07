@@ -5,7 +5,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private PlayerControls inputActions;
     private Vector2 moveInput;
-    public float moveSpeed = 5f;
+    private float moveSpeed = 5f;
+    private float max_x = 2f;
+    private float min_x = -2f;
 
     private void Awake()
     {
@@ -30,6 +32,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 move = new Vector3(moveInput.x, 0, 0);
         transform.Translate(move * moveSpeed * Time.deltaTime);
-        
+
+        // Clamp X position to stay within bounds
+        float clampedX = Mathf.Clamp(transform.position.x, min_x, max_x);
+        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+
     }
 }
