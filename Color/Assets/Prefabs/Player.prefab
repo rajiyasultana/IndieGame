@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd4f7d2f60ad4444a9b480d298abcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleColors:
+  colorPalette:
   - {r: 0.18431373, g: 0.9137255, b: 1, a: 0}
   - {r: 0, g: 0, b: 1, a: 0}
   - {r: 0, g: 1, b: 0, a: 0}

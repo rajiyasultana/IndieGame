@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    private Renderer playerRenderer;
+    private ColorTag p_colorTag;
+    private PlayerColorSetter playerColorSetter;
     void Start()
     {
-        playerRenderer = GetComponent<Renderer>();
+        p_colorTag = GetComponent<ColorTag>();
+        playerColorSetter = GetComponent<PlayerColorSetter>();
         
     }
 
@@ -15,12 +17,14 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            Renderer obstacleRenderer = other.GetComponent<Renderer>();
+            ColorTag O_colorTag = other.GetComponent<ColorTag>();
 
-            if (obstacleRenderer.material.color == playerRenderer.material.color)
+            if (O_colorTag.colorID == p_colorTag.colorID)
             {
                 GameManager.Instance.AddScore();
                 Destroy(other.gameObject); // success
+
+                playerColorSetter.RandomColorChanger();
             }
             else
             {

@@ -1,21 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerColorSetter : MonoBehaviour
 {
-    public Color[] obstacleColors;
+    public Color[] colorPalette;
     private Renderer rend;
     private ColorTag colorTag;
 
     void Start()
     {
-        int colorIndex = Random.Range(0, obstacleColors.Length);
-
         rend = GetComponent<Renderer>();
-        rend.material.color = obstacleColors[colorIndex];
-
         colorTag = GetComponent<ColorTag>();
+        int colorIndex = Random.Range(0, colorPalette.Length);
+        rend.material.color = colorPalette[colorIndex];
+
+        colorTag.colorID = colorIndex;
+    }
+
+    public void RandomColorChanger()
+    {
+        int colorIndex = Random.Range(0, colorPalette.Length);
+        rend.material.color = colorPalette[colorIndex];
+
         colorTag.colorID = colorIndex;
     }
 }
