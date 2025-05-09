@@ -198,6 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 4923789332774686776, guid: d4d05c817efa53448a2da8f38d90f217, type: 3}
+  obstacleColors:
+  - {r: 0.4627451, g: 0.03529412, b: 0.8509804, a: 0}
+  - {r: 0.18431373, g: 0.9137255, b: 1, a: 0}
 --- !u!4 &381427689
 Transform:
   m_ObjectHideFlags: 0
@@ -889,6 +892,14 @@ PrefabInstance:
     - target: {fileID: 2407544134453490347, guid: 4388ec8056c94ec4fa90c861cac60850, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987220260865561271, guid: 4388ec8056c94ec4fa90c861cac60850, type: 3}
+      propertyPath: colorID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917383724528404992, guid: 4388ec8056c94ec4fa90c861cac60850, type: 3}
+      propertyPath: obstacleColors.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

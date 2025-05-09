@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] private Color[] obstacleColors;
     private float spawnInterval = 1.2f;
     private float spawnZOffset = 20f;       //Distance from player
     private float xMin = -2f, xMax = 2f;
@@ -20,16 +22,18 @@ public class SpawnManager : MonoBehaviour
     {
         float randomX = Random.Range(xMin, xMax);
         Vector3 spawnPos = new Vector3(randomX, player.position.y, player.position.z + spawnZOffset);
-        
+
         GameObject newObstacle = Instantiate(obstaclePrefab, spawnPos, Quaternion.identity);
 
-        //Assign random color
+        int colorIndex = Random.Range(0, obstacleColors.Length);
+
+        // Set color
         Renderer rend = newObstacle.GetComponent<Renderer>();
-        if (rend != null )
-        {
-            Color randomColor = new Color(Random.value, Random.value, Random.value);
-            rend.material.color = randomColor;
-            
-        }
+        rend.material.color = obstacleColors[colorIndex];
+
+        // Set colorID
+        ColorTag tag = newObstacle.GetComponent<ColorTag>();
+        if (tag != null)
+            tag.colorID = colorIndex;
     }
 }
