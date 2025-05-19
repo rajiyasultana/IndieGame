@@ -7,7 +7,7 @@ public class MainManuController : MonoBehaviour
     [SerializeField] TextMeshProUGUI highScoreText;
     [SerializeField] TextMeshProUGUI bestTimeText;
 
-    private void Start()
+    private void Awake()
     {
         GameData data = SaveManager.LoadData();
         highScoreText.text = "High Score: " + data.highScore;

@@ -4,11 +4,7 @@ using System.IO;
 
 public class SaveManager : MonoBehaviour
 {
-    private static string savePath;
-    void Start()
-    {
-        savePath = Application.persistentDataPath + "/gameData.json";
-    }
+    private static readonly string savePath = Application.persistentDataPath + "/gameData.json";
 
     public static void SaveData(GameData data)
     {
