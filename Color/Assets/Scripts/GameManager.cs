@@ -14,16 +14,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOverMenu;
     [SerializeField] TextMeshProUGUI scoreTextCounter;
     [SerializeField] TextMeshProUGUI timeTextCounter;
+    [SerializeField] TextMeshProUGUI highScoreCounter;
+    [SerializeField] TextMeshProUGUI bestTimeCounter;
 
     private int score = 0;
-    private float time = 0f;
+    private float time = 0;
     private bool isGameOver;
     void Awake()
     {
         Instance = this;
     }
 
-    
+    private void Start()
+    {
+        SaveManager.LoadData();
+    }
+
+
     void Update()
     {
         time += Time.deltaTime;
@@ -43,16 +50,27 @@ public class GameManager : MonoBehaviour
         gameOverMenu.SetActive(true);
         Time.timeScale = 0;
 
+        GameData existingData = SaveManager.LoadData();
+
+
         int finalScore = score;
         float finalTime = time;
+        // Compare and update highscore and best time
+        int highScore = Mathf.Max(finalScore, existingData.highScore);
+        float bestTime = Mathf.Max(finalTime, existingData.bestTime);
 
         scoreTextCounter.text = finalScore.ToString();
-        timeTextCounter.text = finalTime.ToString("F2") + "s";
+        timeTextCounter.text = finalTime.ToString() + "`s";
+        highScoreCounter.text = finalScore.ToString();
+        bestTimeCounter.text = finalTime.ToString() + "`s";
+
 
         GameData data = new GameData
         {
             score = finalScore,
-            time = finalTime
+            time = finalTime,
+            highScore = highScore,
+            bestTime = bestTime
         };
 
         SaveManager.SaveData(data);

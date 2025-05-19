@@ -1180,6 +1180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7bf30e0aee0514ea35c08634499c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScoreText: {fileID: 280955207}
+  bestTimeText: {fileID: 1366255834}
 --- !u!1 &276153832
 GameObject:
   m_ObjectHideFlags: 0

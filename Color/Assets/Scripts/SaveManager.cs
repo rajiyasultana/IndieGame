@@ -24,6 +24,17 @@ public class SaveManager : MonoBehaviour
             string json = File.ReadAllText(savePath);
             return JsonUtility.FromJson<GameData>(json);
         }
-        return null;
+        else
+        {
+            // Create default data and save it
+            GameData defaultData = new GameData
+            {
+                highScore = 0,
+                bestTime = 0f
+            };
+
+            SaveData(defaultData);
+            return defaultData;
+        }
     }
 }

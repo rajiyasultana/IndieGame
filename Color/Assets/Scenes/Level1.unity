@@ -730,6 +730,8 @@ MonoBehaviour:
   gameOverMenu: {fileID: 1825331582}
   scoreTextCounter: {fileID: 93869495}
   timeTextCounter: {fileID: 81378307}
+  highScoreCounter: {fileID: 832265605}
+  bestTimeCounter: {fileID: 1519855001}
 --- !u!4 &176913083
 Transform:
   m_ObjectHideFlags: 0
